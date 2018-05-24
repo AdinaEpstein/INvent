@@ -1,0 +1,66 @@
+#define trigPin 13
+#define echoPin 12
+// Write the pin for the red LED
+#define ledR 
+// Write the pin for the yellow LED
+#define ledY 
+// Write the pin for the green LED
+#define ledG 
+
+void setup() {
+  Serial.begin (9600);
+  
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledR, OUTPUT);
+  pinMode(ledY, OUTPUT);
+  pinMode(ledG, OUTPUT);
+
+}
+
+void loop() {
+  
+  long duration, distance;
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration/2) / 29.1;
+
+if (distance < 15) {
+  digitalWrite(ledR, HIGH);
+  digitalWrite(ledY, LOW);
+  digitalWrite(ledG, LOW);
+}
+
+// fill in the distance range for the yellow LED
+else if (distance >=  && distance <= ) {
+  // set each LED to either HIGH or LOW
+  digitalWrite(ledR, );
+  digitalWrite(ledY, );
+  digitalWrite(ledG, );
+}
+
+// fill in the distance case for the green LED
+else if (distance > ) {
+  // set each LED to either HIGH or LOW
+  digitalWrite();
+  digitalWrite();
+  digitalWrite();
+}
+
+else {
+  Serial.print("Not Working");
+}
+
+Serial.print(distance);
+
+Serial.println(" cm");
+
+delay(500);
+
+}
